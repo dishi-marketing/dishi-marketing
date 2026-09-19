@@ -87,7 +87,12 @@ export default function Header() {
           </nav>
 
           <div className="flex items-center gap-2">
-            <WhatsAppButton size="sm" className="hidden whitespace-nowrap md:inline-flex" />
+            {/* Wrapped rather than given a `hidden` className: the button sets
+                `inline-flex` in its own base classes, and that utility is
+                emitted after `hidden` in the stylesheet, so it would win. */}
+            <span className="hidden md:inline-flex">
+              <WhatsAppButton size="sm" className="whitespace-nowrap" />
+            </span>
             <button
               type="button"
               onClick={() => setOpen((v) => !v)}
